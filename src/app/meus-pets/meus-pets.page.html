@@ -1,0 +1,93 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Meus Pets</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="salvar()">
+    <ion-item lines="full">
+      <ion-label position="floating">Nome</ion-label>
+      <ion-input type="text" name="nome" value="pet.nome" [(ngModel)]="pet.nome"></ion-input>
+    </ion-item>
+
+    <ion-row>
+      <ion-col>
+
+        <ion-label>Cuidados</ion-label>
+        <ion-select [(ngModel)]="pet.cuidado" name="cuidado"  okText="ok"
+          cancelText="cancelar">
+          <ion-select-option *ngFor="let item of cuidados" [value]="item.valor">{{item.texto}}</ion-select-option>
+        </ion-select>
+
+      </ion-col>
+      <ion-col>
+        <ion-label>Porte</ion-label>
+        <ion-select [(ngModel)]="pet.porte" name="porte" okText="ok" cancelText="cancelar">
+          <ion-select-option *ngFor="let item of portes" [value]="item.valor">{{item.texto}}</ion-select-option>
+        </ion-select>
+      </ion-col>
+    </ion-row>
+    <ion-item lines="full">
+      <ion-label>Raça</ion-label>
+      <ion-select  [(ngModel)]="pet.raca" name="raca" okText="ok" cancelText="cancelar">
+        <ion-select-option *ngFor="let item of racas" [value]="item.valor">{{item.texto}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Foto</ion-label>
+      <ion-input type="text" name="foto" value="pet.foto" [(ngModel)]="pet.foto"></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Descrição</ion-label>
+      <ion-input value="pet.descricao" [(ngModel)]="pet.descricao" type="text" name="descricao"></ion-input>
+    </ion-item>
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" color="success" expand="block">Salvar</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+  <ion-list>
+    <ion-list-header>
+      Meus Pets
+    </ion-list-header>
+
+
+    <ion-item-sliding *ngFor="let dog of pets">
+
+      <ion-item class="itens">
+        <ion-avatar slot="start">
+          <img [src]="dog.foto" />
+        </ion-avatar>
+        <ion-label>
+          <h3>
+            Nome:{{dog.nome}} Raça: {{showRaca(dog.raca)}}
+          </h3>
+          <h3>
+            Cuidado:{{showCuidado(dog.cuidado)}} Porte: {{showPorte(dog.porte)}}
+          </h3>
+          <h3>
+            Dono: {{dog.dono.usuario}} Descrição: {{dog.descricao}}
+          </h3>
+        </ion-label>
+      </ion-item>
+      <ion-item-options side="start">
+        <ion-item-option color="warning" (click)="editar(dog)">
+          <ion-icon name="pencil" slot="icon-only"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+      <ion-item-options side="end">
+        <ion-item-option color="danger" (click)="excluir(dog)">
+          <ion-icon name="trash" slot="icon-only"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+
+  </ion-list>
+</ion-content>

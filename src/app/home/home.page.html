@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Home</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+     <div id="divCapa">
+      <img id="imgCapa" [src]="usuario.foto" />
+     </div>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="12">
+           {{usuario.usuario}}
+          </ion-col>
+        </ion-row>
+      
+        <ion-row>
+          <ion-col size="6">
+            {{usuario.nascimento | date: 'dd/MM/yyyy' }}
+          </ion-col>
+          <ion-col size="6">
+            {{showSexo(usuario.sexo)}}
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+  <ion-row>
+    <ion-col size="10" id="colExcluirConta">
+      <ion-button  color="danger" expand="block" (click)="excluirUsuario(usuario)">Excluir conta</ion-button>
+    </ion-col > 
+  </ion-row>
+
+</ion-content>

@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{telaTitulo}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="telaTipo==1">
+  <form [formGroup]="cadastroGroup" (ngSubmit)="cadastrar()">
+    <ion-item lines="full">
+      <ion-label position="floating">Usuario</ion-label>
+      <ion-input type="text" [(ngModel)]="usuario.usuario" formControlName="usuarioC"
+        [ngModelOptions]="{standalone: true}"></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Senha</ion-label>
+      <ion-input type="password" formControlName="senhaC" [(ngModel)]="usuario.senha"
+        [ngModelOptions]="{standalone: true}"></ion-input>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-label>Sexo</ion-label>
+      <ion-select  formControlName="sexoC" [(ngModel)]="usuario.sexo" name="sexo" okText="ok" cancelText="cancelar">
+        <ion-select-option *ngFor="let item of sexos" [value]="item.valor">{{item.texto}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-label position="floating">Nascimento</ion-label>
+      <ion-datetime displayFormat="DD/MM/YYYY" formControlName="dataC" cancelText="Cancelar" doneText="Selecionar"
+        [(ngModel)]="usuario.nascimento" [ngModelOptions]="{standalone: true}"></ion-datetime>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-label>Url foto</ion-label>
+      <ion-input type="text" name="foto" formControlName="fotoC" [(ngModel)]="usuario.foto"
+        [ngModelOptions]="{standalone: true}"></ion-input>
+    </ion-item>
+    <ion-text color="danger">
+      {{loginMsg}}
+    </ion-text>
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" color="success" expand="block" [disabled]="!cadastroGroup.valid">Cadastrar
+        </ion-button>
+        <a (click)="mudarTela('Entrar',0)" class="small-text">Já tem conta?</a>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>
+
+<ion-content *ngIf="telaTipo==0">
+  <ion-img id="img-login" src="https://i.pinimg.com/originals/91/2c/ba/912cba6eb6133293525006a51ce4b342.jpg"></ion-img>
+  <form (ngSubmit)="entrar()">
+    <ion-item lines="full">
+      <ion-label position="floating">Nome</ion-label>
+      <ion-input type="text" [(ngModel)]="usuario.usuario" [ngModelOptions]="{standalone: true}"></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Senha</ion-label>
+      <ion-input type="password" [(ngModel)]="usuario.senha" [ngModelOptions]="{standalone: true}"></ion-input>
+    </ion-item>
+    <ion-text color="danger">
+      {{loginMsg}}
+    </ion-text>
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" color="success" expand="block">Entrar</ion-button>
+        <a (click)="mudarTela('Cadastrar',1)" class="small-text">Ainda não tem uma conta?</a>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>

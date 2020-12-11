@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Editar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <div id="divCapa">
+    <ion-avatar id="imgCapa">
+      <img  [src]="usuario.foto" />
+    </ion-avatar>
+  </div>
+  
+  <form  (ngSubmit)="salvar()">
+    <ion-item lines="full">
+      <ion-label position="floating">Usuario</ion-label>
+      <ion-input type="text" name="usuario" [(ngModel)]="usuario.usuario"   ></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Senha</ion-label>
+      <ion-input type="password"   name="senha"  [(ngModel)]="usuario.senha" ></ion-input>
+    </ion-item>
+
+    <ion-item  lines="full">
+      <ion-label >Sexo</ion-label>
+      <ion-select  [(ngModel)]="usuario.sexo" name="sexo"    okText="ok" cancelText="cancelar">
+        <ion-select-option *ngFor="let sexo of sexos" [value]="sexo.valor" >{{sexo.texto}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-label position="floating">Nascimento</ion-label>
+      <ion-datetime  displayFormat="DD/MM/YYYY"  name="nascimento" cancelText="Cancelar" doneText="Selecionar" [(ngModel)]="usuario.nascimento" ></ion-datetime>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-label>Url foto</ion-label>
+      <ion-input type="text" name="foto"   value="usuario.foto" [(ngModel)]="usuario.foto" ></ion-input>
+    </ion-item>
+    <ion-text color="danger">
+      {{loginMsg}}
+    </ion-text>
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" color="success" expand="block" >Salvar</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>
