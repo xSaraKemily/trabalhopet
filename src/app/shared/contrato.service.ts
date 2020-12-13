@@ -9,6 +9,7 @@ export class ContratoService {
 
   constructor() { 
     this.contratos = new Array;
+    
   }
 
   getCodigo() {
