@@ -40,13 +40,11 @@ export class PetService {
       this.usuarios = [...this.usuarios, usuario];
     } else {
       this.usuarios[indice] = {...usuario};
-      console.log(indice);
     }
   }
 
   entrarUsuario(usuario:Usuario):boolean {
     this.usuarioLogado = this.usuarios.filter(obj => obj.usuario == usuario.usuario && obj.senha == usuario.senha)[0];
-    console.log(this.usuarioLogado);
     if(this.usuarioLogado != undefined) {
       return true;
     }else{
@@ -56,7 +54,6 @@ export class PetService {
 
   verificaUsuario(usuario:Usuario):boolean {
     const indice = this.usuarios.findIndex(obj => obj.codigo === usuario.codigo);
-    console.log(indice);
     if(indice === -1) {
       return false;
     }else{

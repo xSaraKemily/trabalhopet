@@ -43,7 +43,6 @@ export class MeusPetsPage implements OnInit {
 
   getPets() {
     this.pets = this.petService.getPets();
-    console.log(this.pets);
   }
 
   editar(pet:Pet) {

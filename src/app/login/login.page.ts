@@ -45,7 +45,7 @@ export class LoginPage implements OnInit {
     return (<any>Sexo)[sexo];
   }
   cadastrar() {
-    console.log(this.usuario.sexo);
+
     if (this.petService.verificaUsuario(this.usuario)) {
       this.loginMsg = "Esse usuario já existe!";
     } else {
