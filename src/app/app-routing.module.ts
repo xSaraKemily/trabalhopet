@@ -22,9 +22,14 @@ const routes: Routes = [
   {
     path: 'meus-pets',
     loadChildren: () => import('./meus-pets/meus-pets.module').then( m => m.MeusPetsPageModule)
-  },  {
+  },
+  {
     path: 'cuidadores',
     loadChildren: () => import('./cuidadores/cuidadores.module').then( m => m.CuidadoresPageModule)
+  },
+  {
+    path: 'contratos/:cuidador',
+    loadChildren: () => import('./contratos/contratos.module').then( m => m.ContratosPageModule)
   },
   {
     path: 'contratos',

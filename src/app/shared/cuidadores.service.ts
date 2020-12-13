@@ -24,7 +24,7 @@ export class CuidadoresService {
         nome      :  'Brayan',
         contato   :  '(48) 990938475',
         sexo      :  Sexo.M,
-        foto      :  'https://vgraphs.com/images/agents/brimstone-avatar.jpg',
+        foto      :  'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/463966fd-512d-46b9-8ea7-527487401c91/d2uidcv-e7162f65-0246-444c-89c4-6484b8e5358a.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvNDYzOTY2ZmQtNTEyZC00NmI5LThlYTctNTI3NDg3NDAxYzkxXC9kMnVpZGN2LWU3MTYyZjY1LTAyNDYtNDQ0Yy04OWM0LTY0ODRiOGU1MzU4YS5naWYifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.vyFpAR3M3Xt2QxhSV9Z8yY29r-QCU1Jyip1uFMn1WBE',
         valorHora :  30.00,
       },
       {
@@ -44,6 +44,10 @@ export class CuidadoresService {
 
   listar() {
     return this.cuidadores;
+  }
+
+  getCuidador(codigo:number) {
+    return this.cuidadores.filter(obj => obj.codigo == codigo)[0];
   }
 
   excluir(cuidadores: Cuidadores):void {

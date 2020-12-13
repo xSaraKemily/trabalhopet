@@ -9,10 +9,11 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PetPopOverComponent } from './pet-pop-over/pet-pop-over.component';
 
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
+  declarations: [AppComponent,PetPopOverComponent],
+  entryComponents: [PetPopOverComponent],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
