@@ -12,7 +12,6 @@ export class ContratoService {
 
   constructor(private petService:PetService,private cuidadorService:CuidadoresService) { 
     this.contratos = new Array;
-    this.petsParams = new Array;
   }
 
   getCodigo() {
