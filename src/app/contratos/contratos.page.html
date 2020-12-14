@@ -54,18 +54,12 @@
     <ion-item-sliding *ngFor="let ct of contratos">
 
       <ion-item class="itens">
-        <ion-avatar slot="start">
-          <img [src]="ct.pet.foto" />
-        </ion-avatar>
         <ion-label>
           <h3>
             <b>Descrição:</b> {{ct.descricao}}
           </h3>
           <h3>
             <b>Cuidador:</b> {{ct.cuidador.nome}} - <ion-text color="danger"> {{ct.cuidador.valorHora | currency: 'BRL'}} </ion-text>
-          </h3>
-           <h3>
-            <b>Pet:</b> {{ct.pet.nome}}
           </h3> 
           <h3>
             <b>Período:</b> {{showPeriodo(ct.periodo)}}
@@ -74,8 +68,8 @@
       </ion-item>
       <ion-item>
         <ion-button size="small" shape="round" color="medium" (click)="petsContrato($event,ct.pet)">
-          <ion-icon name="notifications"></ion-icon>
-          <ion-badge color="dark" slot="end">2</ion-badge>
+          <ion-icon name="receipt"></ion-icon>
+          <ion-badge color="dark" slot="end">{{ct.pet.length}}</ion-badge>
       </ion-button>
       </ion-item>
       <ion-item-options side="start">

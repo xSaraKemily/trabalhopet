@@ -85,11 +85,10 @@ export class ContratosPage implements OnInit {
   }
 
   async petsContrato(ev: any,params : Pet[]) {
-    this.contratoService.petsParams = params;
     const popover = await this.popoverController.create({
       component: PetPopOverComponent,
       componentProps: {
-        comments: params
+        pets: params
       },
       cssClass: 'my-custom-class',
       event: ev,

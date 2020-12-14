@@ -9,7 +9,6 @@ import { PetService } from './pet.service';
 })
 export class ContratoService {
  private contratos : Contrato[]; 
- petsParams: Pet[];
 
   constructor(private petService:PetService,private cuidadorService:CuidadoresService) { 
     this.contratos = new Array;

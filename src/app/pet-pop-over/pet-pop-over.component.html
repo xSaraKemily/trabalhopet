@@ -1,3 +1,29 @@
-<p>
- {{comments}}
-</p>
+<div>
+    <ion-list>
+        <ion-item class="itens" *ngFor="let dog of pets">
+                <ion-avatar slot="start">
+                  <img [src]="dog.foto" />
+                </ion-avatar>
+                <ion-label>
+                  <h3>
+                    Nome:{{dog.nome}}
+                  </h3>
+                  <h3>
+                    Raça: {{showRaca(dog.raca)}}
+                  </h3>
+                  <h3>
+                    Cuidado:{{showCuidado(dog.cuidado)}}
+                  </h3>
+                  <h3>
+                   Porte: {{showPorte(dog.porte)}}
+                  </h3>
+                  <h3>
+                    Dono: {{dog.dono.usuario}} Descrição: {{dog.descricao}}
+                  </h3>
+                  <h3>
+                   Descrição: {{dog.descricao}}
+                  </h3>
+                </ion-label>
+          </ion-item>
+    </ion-list>
+</div>
