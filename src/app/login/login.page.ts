@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
 import { Cuidado } from '../shared/cuidado.enum';
 import { PetService } from '../shared/pet.service';
 import { Sexo } from '../shared/sexo.enum';
@@ -18,7 +19,7 @@ export class LoginPage implements OnInit {
   loginMsg: string;
   sexos:any[];
   private cadastroGroup: FormGroup;
-  constructor(private petService: PetService, private formBuilder: FormBuilder, private router: Router) {
+  constructor(public toastController: ToastController,private petService: PetService, private formBuilder: FormBuilder, private router: Router) {
 
 
     this.cadastroGroup = this.formBuilder.group({
@@ -47,7 +48,7 @@ export class LoginPage implements OnInit {
   cadastrar() {
 
     if (this.petService.verificaUsuario(this.usuario)) {
-      this.loginMsg = "Esse usuario já existe!";
+      this.testeUsuarioAviso(); 
     } else {
       this.usuario.codigo =  this.petService.getCodigoUsuario();
       this.petService.salvarUsuario(this.usuario);
@@ -69,8 +70,27 @@ export class LoginPage implements OnInit {
       this.loginMsg = "";
       this.router.navigate(['/home']);
     } else {
-      this.loginMsg = "Login ou senha incorreta!";
+      this.testeLoginAviso(); 
     }
 
+  }
+
+
+  async testeUsuarioAviso() {
+    const toast = await this.toastController.create({
+      message: '                    Esse usuario já existe!',
+      duration: 1000,
+      color: 'danger'
+    });
+    toast.present();
+  }
+
+  async testeLoginAviso() {
+    const toast = await this.toastController.create({
+      message: '       Login ou senha incorreta!',
+      duration: 1000,
+      color: 'danger'
+    });
+    toast.present();
   }
 }

@@ -56,7 +56,7 @@ export class PetService {
   }
 
   verificaUsuario(usuario:Usuario):boolean {
-    const indice = this.usuarios.findIndex(obj => obj.codigo === usuario.codigo);
+    const indice = this.usuarios.findIndex(obj => obj.usuario === usuario.usuario);
     if(indice === -1) {
       return false;
     }else{
